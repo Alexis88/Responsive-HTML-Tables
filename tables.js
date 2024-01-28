@@ -18,11 +18,11 @@ const Tablas = {
 	load: _ => {
 		Tablas.th = Tablas.th || [];
 		Tablas.nodes = document.querySelectorAll("table");
-		Tablas.nodes && Tablas.change();
+		Tablas.nodes?.length && Tablas.change();
 	},
 
 	change: _ => {
-		Tablas.nodes.forEach((tabla, index) => {
+		Tablas.nodes?.forEach((tabla, index) => {
 			let tr = tabla.querySelectorAll("tbody tr"), //Filas de la tabla
 				th,	//Variable que almacenará a la primera cabecera
 				thContent = {content: [], padding: []}, //Objeto con el contenido de las cabeceras de la tabla
@@ -108,6 +108,8 @@ const Tablas = {
 					td, //Variable que almacenará a cada celda
 					first, //Variable que almacenará a la primera celda de cada fila
 					arr = []; //Arreglo que almacenará el contenido de las celdas
+
+				if (!thead) return;
 
 				//Se limpian las cabeceras actuales (en vista chica, solo una)
 				thead.innerHTML = "";
